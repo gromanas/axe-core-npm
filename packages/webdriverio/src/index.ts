@@ -310,7 +310,7 @@ export default class AxeBuilder {
   private async setBrowsingContext(
     id: null | WdioElement | WdioBrowser = null
   ): Promise<void> {
-    if (id) {
+    if (id || browser.isIOS || browser.requestedCapabilities.browserName === 'safari') {
       await this.client.switchToFrame(id);
     } else {
       await this.client.switchToParentFrame();
